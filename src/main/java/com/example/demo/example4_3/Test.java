@@ -1,3 +1,4 @@
+/*
 package com.example.demo.example4_3;
 
 public class Test {
@@ -47,3 +48,4 @@ public class Test {
     // write in another thread
     executor.execute(writer);
 }
+*/

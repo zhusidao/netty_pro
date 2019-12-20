@@ -37,7 +37,7 @@ public class NettyOioServer {
                                         @Override
                                         public void channelActive(ChannelHandlerContext ctx) {
                                             // 将消息写到客户端，并添加ChannelFutureListener，以便消息一被写完就关闭连接
-                                            ctx.writeAndFlush(buf.duplicate()).addListener(ChannelFutureListener.CLOSE);
+
                                         }
                                     });
                         }
