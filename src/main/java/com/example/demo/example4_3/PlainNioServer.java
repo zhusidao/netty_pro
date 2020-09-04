@@ -18,6 +18,9 @@ import java.util.Set;
  * @Date: 2019/11/11 17:28
  */
 public class PlainNioServer {
+    public static void main(String[] args) throws IOException {
+        new PlainNioServer().serve(8080);
+    }
     public void serve(int port) throws IOException {
         ServerSocketChannel serverChannel = ServerSocketChannel.open();
         serverChannel.configureBlocking(false);

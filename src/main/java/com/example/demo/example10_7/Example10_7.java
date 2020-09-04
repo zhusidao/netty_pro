@@ -1,16 +1,21 @@
 package com.example.demo.example10_7;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInitializer;
 import io.netty.handler.codec.MessageToMessageCodec;
 import io.netty.handler.codec.http.websocketx.*;
+import io.netty.handler.ssl.SslContext;
+import io.netty.handler.ssl.SslHandler;
 
+import javax.net.ssl.SSLEngine;
 import java.util.List;
 
 /**
  * ShortToByteEncoder编码器
  */
-public class Example10_7 {
+public class    Example10_7 {
     public static void main(String[] args) {
     }
 

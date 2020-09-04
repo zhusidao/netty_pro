@@ -30,10 +30,9 @@ public class Example8_7 {
                         // 设置用以处理Channel 的I/O 以及数据的Channel-InboundHandler
                         new SimpleChannelInboundHandler<ByteBuf>() {
                             @Override
-                            protected void messageReceived(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
+                            protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
                                 System.out.println("Received data");
                             }
-
                             @Override
                             public void channelRegistered(ChannelHandlerContext ctx)
                                     throws Exception {

@@ -25,8 +25,9 @@ public class Example8_5 {
                         new SimpleChannelInboundHandler<ByteBuf>() {
                             ChannelFuture connectFuture;
 
+
                             @Override
-                            protected void messageReceived(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
+                            protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
                                 if (connectFuture.isDone()) {
                                     // do something with the data
                                 }
@@ -39,10 +40,9 @@ public class Example8_5 {
                                 bootstrap.channel(NioSocketChannel.class).handler(
                                         new SimpleChannelInboundHandler<ByteBuf>() {
                                             @Override
-                                            protected void messageReceived(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
+                                            protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
                                                 System.out.println("Received data");
                                             }
-
                                         });
                                 bootstrap.group(ctx.channel().eventLoop());
                                 connectFuture = bootstrap.connect(

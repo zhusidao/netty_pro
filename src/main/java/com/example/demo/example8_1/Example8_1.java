@@ -20,7 +20,7 @@ public class Example8_1 {
                 // 设 置用于处理已被接受的子Channel的I/O及数据的ChannelInbound-Handler
                 .handler(new SimpleChannelInboundHandler<ByteBuf>() {
                     @Override
-                    protected void messageReceived(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
+                    protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
                         System.out.println("Received data");
                     }
                 })

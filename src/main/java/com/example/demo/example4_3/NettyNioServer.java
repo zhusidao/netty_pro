@@ -33,7 +33,7 @@ public class NettyNioServer {
                         public void initChannel(SocketChannel ch) {
                             ch.pipeline().addLast(
                                     // 添加ChannelInbound-HandlerAdapter 以接收和处理事件
-                                    new ChannelHandlerAdapter() {
+                                    new ChannelInboundHandlerAdapter() {
                                         @Override
                                         public void channelActive(ChannelHandlerContext ctx) {
                                             // 将消息写到客户端，并添加ChannelFutureListener，以便消息一被写完就关闭连接

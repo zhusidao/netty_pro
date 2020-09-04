@@ -27,8 +27,8 @@ public class Example8_8 {
                         // 设置用以处理Channel 的I/O 以及数据的Channel-InboundHandler
                         new SimpleChannelInboundHandler<DatagramPacket>() {
                             @Override
-                            protected void messageReceived(ChannelHandlerContext ctx, DatagramPacket msg) throws Exception {
-                                // Do something with the packet
+                            protected void channelRead0(ChannelHandlerContext ctx, DatagramPacket msg) throws Exception {
+
                             }
                         }
                 );
@@ -36,8 +36,7 @@ public class Example8_8 {
         ChannelFuture future = bootstrap.bind(new InetSocketAddress(0));
         future.addListener(new ChannelFutureListener() {
             @Override
-            public void operationComplete(ChannelFuture channelFuture)
-                    throws Exception {
+            public void operationComplete(ChannelFuture channelFuture) {
                 if (channelFuture.isSuccess()) {
                     System.out.println("Channel bound");
                 } else {

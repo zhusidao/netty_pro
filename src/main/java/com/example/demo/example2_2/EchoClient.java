@@ -24,6 +24,7 @@ public class EchoClient {
     }
 
     public void start() throws Exception {
+        // 新建EventLoopGroup
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             // 创建Bootstrap
@@ -34,17 +35,19 @@ public class EchoClient {
                     .channel(NioSocketChannel.class)
                     // 设置服务器的InetSocketAddress
                     .remoteAddress(new InetSocketAddress(host, port))
-                    // 在创建Channel 时，向ChannelPipeline中添加一个Echo-ClientHandler 实例
+                    // 在创建Channel时，向ChannelPipeline中添加一个Echo-ClientHandler实例
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) {
-                            ch.pipeline().addLast(
-                                    new EchoClientHandler());
+                            ch.pipeline()
+                                    .addLast()
+                                    // 自定义ChannelHandler
+                                    .addLast(new EchoClientHandler());
                         }
                     });
             // 连接到远程节点，阻塞等待直到连接完成
             ChannelFuture f = b.connect().sync();
-            // 阻塞，直到Channel 关闭
+            // 阻塞，直到Channel关闭
             f.channel().closeFuture().sync();
         } finally {
             // 关闭线程池并且释放所有的资源
